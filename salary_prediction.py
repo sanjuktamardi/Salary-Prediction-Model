@@ -28,7 +28,12 @@ print(data)
 # using graphs for better understanding how the data is distributed
 x = data['YearsExperience']
 y = data['Salary']
-plt.plot(x, y)
+plt.plot(x, y, color = 'red', marker='o', label ='data points')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.title('Years of Experience vs Salary')
+plt.tight_layout()
+plt.savefig("visualization.png")
 plt.show()
 
 # split into train-test
