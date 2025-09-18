@@ -49,7 +49,7 @@ Algorithm used - Linear Regression
      - LinearRegression
 
      - mean_absolute_error, mean_squared_error, r2_score
-  
+  5. Gradio
 ## How to Run :
 1. clone this repository :
 ```bash
@@ -78,5 +78,17 @@ mean absolute error: 6286.453830757743
 mean squared error: 49830096.855908364
 r squared error: 0.9024461774180498
 ```
+### Gradio Interface :
+Deployed an interactive interface using Gradio to make predictions.
+
+### Run the interactive app :
+To try out the salary predictor interactively, run:
+```bash
+python salary_prediction.py
+```
+This will launch a Gradio app in the browser (default: http://127.0.0.1:7860)
+Enter the "Years of Experience" and get the salary instantly.
+
+
 
 
