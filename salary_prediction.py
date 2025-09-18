@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import gradio as gr
 
 # loading the data
 df = pd.read_csv("Salary_dataset.csv", encoding='utf-8', delimiter=',')
@@ -47,9 +48,9 @@ model.fit(X_train, y_train)
 
 
 # making the predictions
-user_input = float(input('\nenter your years of experience : '))
-user_pred = model.predict([[user_input]])
-print("based on your years of experience your salary would be : ", round(user_pred[0], 2))
+def predict_salary(years_experience):
+    user_pred = model.predict([[years_experience]])
+    return round(user_pred[0], 2)
 
 #  CALCULATING ERROR :
 
@@ -61,6 +62,18 @@ rse = r2_score(y_test, y_pred)
 print('mean absolute error:', mae)
 print('mean squared error:', mse)
 print('r squared error:', rse)
+
+# adding gradio
+iface = gr.Interface(
+    fn= predict_salary,  # your prediction function
+    inputs = gr.Number(label='Years of Experience'),
+    outputs = gr.Number(label= 'Predicted Salary'),
+    title='Salary Prediction Model',
+    description='Enter years of eperience to predict salary.',
+    theme='gradio/light'
+    )
+
+iface.launch()
 
 
 
